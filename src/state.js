@@ -1,0 +1,1 @@
+export let selectedProject = {projectName: "All Projects"}; //Default Project

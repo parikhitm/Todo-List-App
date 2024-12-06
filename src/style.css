@@ -1,0 +1,906 @@
+h1 {
+    text-align: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+#application-header {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    background-color: white;
+    padding: 10px 40px;
+    align-items: center;
+    border-bottom: 2px solid rgb(52, 255, 33);
+}
+
+#application-header svg {
+    width: 40px;
+    height: 40px;
+    fill: black;
+}
+
+#application-header h1 {
+    font-size: 40px;
+    word-spacing: 1px;
+    color: black;
+}
+
+#dark-theme-button {
+    width: 60px;
+    height: 30px;
+    border: 2px solid rgb(59, 202, 3);
+    border-radius: 18px;
+    display: flex;
+    gap: 3px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1px 3px;
+    cursor: pointer;
+}
+
+#dark-theme-button svg {
+    width: 25px;
+    height: 25px;
+}
+
+.dark-theme {
+    background-color: rgb(25, 39, 52) !important;
+    color: white !important;
+}
+
+.dark-theme > div {
+    background-color: rgb(25, 39, 52) !important;
+}
+
+.dark-theme > div > svg {
+    fill: white !important;
+}
+
+.dark-theme > div > h1 {
+    color: white !important;
+}
+
+.dark-theme > div > div > svg {
+    fill: white !important;
+}
+
+.dark-theme > div > #sidebar > div > button {
+    color: white !important;
+}
+
+.dark-theme > div > #sidebar > div > button > svg {
+    fill: white !important;
+}
+
+.dark-theme > div > #sidebar > div > ul > li {
+    color: white !important;
+}
+
+.dark-theme > div > #sidebar > div > ul > li:hover {
+    background-color: rgb(57, 80, 102) !important;
+}
+
+.dark-theme > div > #main-container {
+    background-color: rgb(57, 80, 102) !important;
+}
+
+.dark-theme > div > #main-container > #tasks-container > #individual-tasks {
+    background-color: rgb(25, 39, 52) !important;
+    border: 0.5px solid white !important;
+}
+
+.dark-theme > div > #main-container > #tasks-container > #individual-tasks > p {
+    color: white;
+}
+
+.dark-theme > div > #main-container > #tasks-container > .task-completed > p {
+    color: rgb(143, 143, 143) !important;
+}
+
+.dark-theme > div > #main-container > #tasks-container > .task-completed > div > p {
+    color: rgb(143, 143, 143) !important;
+}
+
+.dark-theme > div > #main-container > #tasks-container > #individual-tasks > div > svg > polygon {
+    stroke: white !important;
+}
+
+.dark-theme > div > #main-container > #tasks-container > #individual-tasks > div > p {
+    color: white;
+}
+
+.dark-theme > .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.dark-theme > .modal-overlay > div {
+    background-color: rgb(57, 80, 102);
+}
+
+.dark-theme > div > #main-container > #tasks-container > .note-container {
+    background-color: rgb(25, 39, 52) !important;
+}
+
+#application-body {
+    display: flex;
+    justify-content: space-between;
+    gap: 0;
+    margin: 0;
+}
+
+#add-task-button {
+    align-self: center;
+    font-size: 18px;
+    font-weight: bold;
+    height: 40px;
+    padding: 5px 15px;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 0;
+    margin-right: 25px;
+    background-color: #2abd67;
+    color: white;
+    cursor: pointer;
+}
+
+#add-note-button {
+    align-self: center;
+    font-size: 18px;
+    font-weight: bold;
+    height: 40px;
+    padding: 5px 15px;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 0;
+    margin-right: 25px;
+    background-color: #2abd67;
+    color: white;
+    cursor: pointer;
+}
+
+#tasks-container {
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+#individual-tasks {
+    width: 90%;
+    height: 50px;
+    display: flex;
+    padding: 10px;
+    gap: 25px;
+    border: 0.5px solid black;
+    border-radius: 10px;
+    margin-top: 20px;
+    align-items: center;
+    background-color: white;
+    justify-content: space-between;
+}
+
+#individual-tasks > p {
+    font-size: 20px;
+}
+
+.task-options-display {
+    width: 593px;
+    display: flex;
+    padding: 0px 5px;
+    align-items: center;
+    height: 50px;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.task-options-display > p {
+    font-size: 20px;
+}
+
+.task-title-display {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides overflowed text */
+    text-overflow: ellipsis; /* Adds '...' at the end */
+    width: 130px;
+}
+
+.task-description-display {
+    display: block;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    text-overflow: ellipsis;
+    width: 250px;
+    align-items: center;
+}
+
+.task-dueDate-display {
+    border: 1.5px dashed rgb(80, 80, 80);
+    border-radius: 15px;
+    width: 120px;
+    text-align: center;
+    line-height: 30px;padding: 0;
+    align-items: center;
+}
+
+.task-priority-display {
+    width: 140px;
+}
+
+.task-project-display {
+    width: 120px;
+}
+
+.task-important-checkbox-display {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.edit-task-button {
+    font-size: 16px;
+    width: 62px;
+    height: 32px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    padding: 0;
+}
+
+.delete-task-button {
+    font-size: 16px;
+    width: 67px;
+    padding: 0;
+    height: 32px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+}
+
+.task-completed > p {
+    text-decoration: line-through;
+    color: rgb(105, 105, 105);
+}
+
+.task-completed > div > p {
+    color: rgb(105, 105, 105);
+}
+
+.task-completed > div > button {
+    border: 1.5px solid rgb(100, 100, 100);
+    border-radius: 5px;
+    padding: 0;
+    color: rgb(104, 104, 104);
+}
+
+.task-uncompleted {
+    text-decoration: none;
+}
+
+#main-container {
+    width: 80%;
+    padding: 30px 50px;
+    background-color: #ececec;
+    min-height: 90vh;
+}
+
+.hidden-main-container {
+    width: 100% !important;
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 20px;
+    height: 100vh;
+    margin: 0;
+}
+
+.hidden-sidebar {
+    top: 0;
+    left: 0;
+    pointer-events: none !important;
+    position: absolute !important;
+    max-height: 0 !important;
+    transition: max-height 3s ease-out !important;
+    opacity: 0 !important;
+}
+
+#home-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+#home-sidebar h2 {
+    font-size: 32px;
+    border-bottom: 2px solid black;
+    width: 100%;
+    padding-bottom: 5px;
+    margin: 0;
+    margin-bottom: 20px;
+
+}
+
+#home-sidebar button {
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: left;
+    padding: 5px;
+    margin: 3px 0;
+    font-size: 19px;
+    font-weight: bold;
+    gap: 8px;
+    align-items: center;
+    color: #374958;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.selected {
+    background-color: rgba(42, 189, 103, 0.44) !important;
+    border-bottom-left-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-left: solid 3px #2abd67 !important;
+}
+
+#home-sidebar button svg {
+    width: 28px;
+    height: 28px;
+}
+
+#project-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#project-list li {
+    cursor: pointer;
+    height: 28px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 3px 0;
+    color: #374958;
+    background-color: transparent;
+}
+
+#project-list li:hover {
+    background-color: rgb(196, 196, 196);
+
+}
+
+.project-delete-button {
+    font-size: 13px;
+    padding: 5px 8px;
+    border: 1.5px solid #2abd67;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#project-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+
+#project-sidebar-header h2 {
+    font-size: 32px;
+    width: 61%;
+    margin: 0;
+    margin-bottom: 13px;
+    margin-top: 20px;
+}
+
+#project-sidebar-header button {
+    width: 39%;
+    font-size: 16px;
+    font-weight: bold;
+    height: 35px;
+    padding: 5px 8px;
+    border: 2px solid #2abd67;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#notes-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#notes-sidebar-header h2 {
+    font-size: 32px;
+    width: 61%;
+    margin: 0;
+    margin-bottom: 13px;
+    margin-top: 20px;
+}
+
+#view-all-notes {
+    width: 39%;
+    font-size: 16px;
+    font-weight: bold;
+    height: 35px;
+    padding: 5px 8px;
+    border: 2px solid #2abd67;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.add-note-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 600px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.add-note-modal-content h2 {
+    margin: 0;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.add-note-modal-content input {
+    padding: 5px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.add-note-modal-content textarea {
+    resize: none;
+    padding: 5px;
+    font-size: 15px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    width: 100%;
+    height: 150px;
+}
+
+.add-note-modal-content button {
+    width: 48%;
+    padding: 5px 8px;
+    font-size: 16px;
+    font-weight: bolder;
+    border: 1.5px solid black;
+    border-radius: 5px;
+}
+
+.note-container {
+    background-color: white;
+    padding: 20px;
+    width: 270px;
+    height: 200px;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.note-container h3 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.note-container p {
+    font-size: 18px;
+    text-overflow: ellipsis;
+    white-space: wrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides overflowed text */
+}
+
+.note-container div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.note-container button {
+    width: 30%;
+    padding: 7px 9px;
+    font-size: 16px;
+    font-weight: bolder;
+    border: 1.5px solid black;
+    border-radius: 5px;
+}
+
+.edit-notes-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 450px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.edit-notes-modal-content h2 {
+    margin: 0;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.edit-notes-modal-content input {
+    padding: 5px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.edit-notes-modal-content textarea {
+    resize: none;
+    padding: 5px;
+    font-size: 15px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    width: 100%;
+    height: 150px;
+}
+
+.edit-notes-modal-content button {
+    width: 48%;
+    padding: 5px 8px;
+    font-size: 15px;
+    font-weight: bolder;
+    border: 1.5px solid black;
+    border-radius: 5px;
+}
+
+.delete-note-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 380px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.delete-note-modal-content h2 {
+    margin: 0;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.delete-note-modal-content p {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.delete-note-modal-content button {
+    width: 48%;
+    padding: 5px 8px;
+    font-size: 15px;
+    font-weight: bolder;
+    border: 1.5px solid black;
+    border-radius: 5px;
+}
+
+.add-task-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 500px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.add-task-modal-content h2 {
+    margin: 0;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.add-task-modal-content input {
+    padding: 5px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add-task-modal-content textarea {
+    resize: none;
+    padding: 5px;
+    font-size: 15px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    width: 100%;
+    height: 150px;
+}
+
+.add-task-modal-content select {
+    border: 1.5px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    width: 48%;
+}
+
+.add-task-modal-content button {
+    width: 48%;
+    padding: 5px 8px;
+    font-size: 16px;
+    font-weight: bolder;
+    border: 1.5px solid black;
+    border-radius: 5px;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 450px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* Delete Project Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Ensure the overlay is on top */
+    z-index: 1000;
+    /* Background color with transparency */
+    background-color: rgba(0, 0, 0, 0.5);
+  
+    /* Flex to center the modal content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Add Project Modal Design */
+.add-project-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+    border-radius: 10px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.add-project-modal-content h2 {
+    margin: 0;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.add-project-modal-content input {
+    padding: 5px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.add-project-modal-content button {
+    width: 46%;
+    padding: 5px 8px;
+    font-size: 15px;
+    font-weight: bolder;
+    border: 1.5px solid black;
+    border-radius: 5px;
+}
+
+.edit-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 450px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.edit-modal-content h2 {
+    margin: 0;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.edit-modal-content input {
+    padding: 5px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.edit-modal-content textarea {
+    resize: none;
+    padding: 5px;
+    font-size: 15px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.edit-modal-content select {
+    border: 1.5px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    width: 100%;
+}
+
+.edit-modal-content button {
+    width: 48%;
+    padding: 5px 8px;
+    font-size: 15px;
+    font-weight: bolder;
+    border: 1.5px solid black;
+    border-radius: 5px;
+}
+
+.delete-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.delete-modal-content h2 {
+    margin: 0;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.delete-modal-content p {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.delete-modal-content button {
+    width: 30%;
+    font-size: 17px;
+    font-weight: bolder;
+    padding: 5px 8px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+}
+
+/* Delete project button modal design*/
+
+.delete-project-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.delete-project-modal-content h2 {
+    margin: 0;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.delete-project-modal-content p {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.delete-project-modal-content button {
+    width: 95%;
+    font-size: 17px;
+    font-weight: bolder;
+    padding: 5px 8px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Transfer tasks from project modal*/
+.transfer-tasks-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.transfer-tasks-modal-content h2 {
+    margin: 0;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.transfer-tasks-modal-content p {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.transfer-tasks-modal-content select {
+    border: 1.5px solid black;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bolder;
+    padding: 4px;
+    width: 100%;
+}
+
+.transfer-tasks-modal-content button {
+    width: 65%;
+    font-size: 17px;
+    font-weight: bolder;
+    padding: 5px 8px;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#all-tasks-container-heading {
+    font-size: 2.3rem;
+    color: #f7f5f5;
+}
+
+.container {
+    background-color: #2abd67;
+    padding: 18px;
+    height: 60px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
