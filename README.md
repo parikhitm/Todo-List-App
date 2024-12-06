@@ -35,7 +35,7 @@ A simple and intuitive **To-Do List application** to help you organize your task
   - Have a theme toggle button, where use can choose which theme they want, default light theme and dark theme.
 
 ---
-## Live Version
+## [Live Version](https://parikhitm.github.io/Todo-List-App/)
 
 ## Usage
 
